@@ -9,10 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b1fcd2d1633442596f431dd641b491c, type: 3}
+  m_Script: {fileID: 11500000, guid: a55daa0e1b7041a3a3b0798f6dfc2095, type: 3}
   m_Name: Scenes
   m_EditorClassIdentifier: 
   scenes:
-  - scene: {fileID: 102900000, guid: 3fc8acdd13e6c734bafef6554d6fdbcd, type: 3}
+  - scene: {fileID: 102900000, guid: 2cda990e2423bbf4892e6590ba056729, type: 3}
     sceneEnumEnum: 0
-    sceneName: Level
+    sceneName: Menu
+  - scene: {fileID: 102900000, guid: b8f7da48b8f26e64ba0729c3f58b95f7, type: 3}
+    sceneEnumEnum: 1
+    sceneName: Gallery
+  - scene: {fileID: 0}
+    sceneEnumEnum: 2
+    sceneName: 

@@ -2,6 +2,8 @@
 {
     public enum SceneEnum 
     {
-        Level,
+        Menu,
+        Gallery,
+        View,
     }
 }
