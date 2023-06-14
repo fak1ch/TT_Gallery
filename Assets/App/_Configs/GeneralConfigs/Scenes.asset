@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Scenes
   m_EditorClassIdentifier: 
   scenes:
-  - scene: {fileID: 102900000, guid: 2cda990e2423bbf4892e6590ba056729, type: 3}
+  - scene: {fileID: 102900000, guid: f119c47aecb8e534ea1fd14e5108e8c5, type: 3}
     sceneEnumEnum: 0
     sceneName: Menu
   - scene: {fileID: 102900000, guid: b8f7da48b8f26e64ba0729c3f58b95f7, type: 3}
     sceneEnumEnum: 1
     sceneName: Gallery
-  - scene: {fileID: 0}
+  - scene: {fileID: 102900000, guid: 6a7a2cf9cf7266c47ad90cb87cfae5cb, type: 3}
     sceneEnumEnum: 2
-    sceneName: 
+    sceneName: View

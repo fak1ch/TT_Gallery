@@ -21,6 +21,6 @@ MonoBehaviour:
     LinkToFolderWithPics: http://data.ikppbb.com/test-task-unity-data/pics/
     FileType: jpg
   DynamicAddControllerConfig:
-    MinScrollRectPositionForAdd: 0.2
+    MinScrollRectPositionForAdd: 0.3
     StartIndex: 1
     StartPicCount: 10

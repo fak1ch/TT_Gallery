@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Threading.Tasks;
+using App.Scripts.General.LoadScene;
 using App.Scripts.General.ObjectPool;
+using App.Scripts.Scenes.View;
 using UnityEngine;
 
 namespace App.Scripts.Scenes.Gallery
@@ -11,6 +13,7 @@ namespace App.Scripts.Scenes.Gallery
         
         [SerializeField] private Transform _picsParent;
         [SerializeField] private GalleryConfigScriptableObject _galleryConfig;
+        [SerializeField] private ViewSceneConfigScriptableObject _viewSceneConfig;
 
         private PicsContainerConfig _config => _galleryConfig.PicsContainerConfig;
         private ObjectPool<Pic> _picPool;
@@ -32,7 +35,14 @@ namespace App.Scripts.Scenes.Gallery
         {
             Pic pic = _picPool.GetElement();
             pic.SetSprite(sprite);
+            pic.OnShowPicButtonClicked += LoadViewScene;
             pic.gameObject.SetActive(true);
+        }
+
+        private void LoadViewScene(Sprite sprite)
+        {
+            _viewSceneConfig.SpriteFromGallery = sprite;
+            SceneLoader.Instance.LoadScene(SceneEnum.View);
         }
     }
 }

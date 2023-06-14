@@ -204,6 +204,8 @@ GameObject:
   - component: {fileID: 197351925}
   - component: {fileID: 197351926}
   - component: {fileID: 197351927}
+  - component: {fileID: 197351928}
+  - component: {fileID: 197351929}
   m_Layer: 0
   m_Name: GameContext
   m_TagString: Untagged
@@ -268,6 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _picsParent: {fileID: 1155163334}
   _galleryConfig: {fileID: 11400000, guid: d24238a1edb5842439df12ce7854ead9, type: 2}
+  _viewSceneConfig: {fileID: 11400000, guid: cc4d67bcc7fa0ac429cefcaa15f0768a, type: 2}
 --- !u!114 &197351927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,6 +286,36 @@ MonoBehaviour:
   _galleryConfig: {fileID: 11400000, guid: d24238a1edb5842439df12ce7854ead9, type: 2}
   _scrollRect: {fileID: 1798117153}
   _gridContainer: {fileID: 1155163335}
+--- !u!114 &197351928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197351922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83229d14519940ccaf939aeb6f52712e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: 27
+  _scene: 0
+--- !u!114 &197351929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197351922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ee36294baf4a2bbef09a5a94132392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _portrait: 1
+  _portraitUpsideDown: 1
+  _landscapeLeft: 0
+  _landscapeRight: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

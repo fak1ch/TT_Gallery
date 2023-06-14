@@ -28,17 +28,17 @@ namespace App.Scripts.Scenes.Gallery
         {
             Uri uri = new Uri($"{_linkToFolder}{index}.{_fileType}");
             
-            using (UnityWebRequest uwr = UnityWebRequestTexture.GetTexture(uri))
+            using (UnityWebRequest unityWebRequest = UnityWebRequestTexture.GetTexture(uri))
             {
-                yield return uwr.SendWebRequest();
+                yield return unityWebRequest.SendWebRequest();
 
-                if (uwr.result != UnityWebRequest.Result.Success)
+                if (unityWebRequest.result != UnityWebRequest.Result.Success)
                 {
-                    Debug.Log(uwr.error);
+                    Debug.Log(unityWebRequest.error);
                 }
                 else
                 {
-                    var texture = DownloadHandlerTexture.GetContent(uwr);
+                    var texture = DownloadHandlerTexture.GetContent(unityWebRequest);
                     Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), 
                         new Vector2(0.5f, 0.5f), 100f, 0, SpriteMeshType.FullRect);
                     _spriteByIndexDictionary.Add(index, sprite);
