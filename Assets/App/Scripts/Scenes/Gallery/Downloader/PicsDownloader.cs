@@ -4,12 +4,14 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace App.Scripts.Scenes.Gallery
 {
     public class PicsDownloader : MonoBehaviour
     {
         [SerializeField] private GalleryConfigScriptableObject _galleryConfig;
+        [SerializeField] private Image _testImage;
 
         private PicsDownloaderConfig _config => _galleryConfig.PicsDownloaderConfig;
         
@@ -37,10 +39,10 @@ namespace App.Scripts.Scenes.Gallery
             
             try
             {
-                string savePath = Path.Combine(Application.persistentDataPath, $"{index}.{_fileType}");
-                await _webClient.DownloadFileTaskAsync(uri, savePath);
+                byte[] bytes = await _webClient.DownloadDataTaskAsync(uri);
+                
+                Sprite sprite = LoadSprite(bytes);
 
-                Sprite sprite = LoadSprite(savePath);
                 _spriteByIndexDictionary.Add(index, sprite);
                 createPicWithSpriteMethod(_spriteByIndexDictionary[index]);
             }
@@ -50,22 +52,15 @@ namespace App.Scripts.Scenes.Gallery
             }
         }
         
-        private Sprite LoadSprite(string path)
+        private Sprite LoadSprite(byte[] bytes)
         {
-            if (string.IsNullOrEmpty(path)) return null;
-            
-            if (File.Exists(path))
-            {
-                byte[] bytes = File.ReadAllBytes(path);
-                Texture2D texture = new Texture2D(1, 1);
-                texture.LoadImage(bytes);
-                Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), 
-                    new Vector2(0.5f, 0.5f));
-                
-                return sprite;
-            }
-            
-            return null;
+            Texture2D texture = new Texture2D(1, 1);
+            texture.LoadImage(bytes);
+
+            Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), 
+                new Vector2(0.5f, 0.5f), 100f, 0, SpriteMeshType.FullRect);
+
+            return sprite;
         }
 
         private void OnDestroy()

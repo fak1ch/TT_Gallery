@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace App.Scripts.Scenes.Gallery
 {
-    [Serializable]
-    public class DynamicAddControllerConfig
-    {
-        public float MinScrollRectPositionForAdd;
-        public int _startIndex = 1;
-    }
-    
     public class DynamicAddController : MonoBehaviour
     {
         [SerializeField] private GalleryConfigScriptableObject _galleryConfig;
@@ -29,10 +21,22 @@ namespace App.Scripts.Scenes.Gallery
         {
             _picsContainer = picsContainer;
             _addCount = _gridContainer.constraintCount;
+            _index = _config.StartIndex;
 
-            _scrollRect.onValueChanged.AddListener(ScrollRectValueChangedCallback);
+            InitializeAsync();
         }
 
+        private async void InitializeAsync()
+        {
+            for (int i = 0; i < _config.StartPicCount; i++)
+            {
+                await _picsContainer.AddPicByIndex(_index);
+                _index++;
+            }
+            
+            _scrollRect.onValueChanged.AddListener(ScrollRectValueChangedCallback);
+        }
+        
         private void ScrollRectValueChangedCallback(Vector2 position)
         {
             if(_dynamicAddPicsTask?.IsCompleted == false) return;
