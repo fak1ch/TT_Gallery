@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections;
+using System.Threading.Tasks;
 using App.Scripts.General.ObjectPool;
 using UnityEngine;
 
@@ -21,10 +22,10 @@ namespace App.Scripts.Scenes.Gallery
             _picPool = new ObjectPool<Pic>(_config.PicPoolData);
             _picsDownloader = picsDownloader;
         }
-        
-        public async Task AddPicByIndex(int index)
+
+        public IEnumerator AddPicByIndexRoutine(int index)
         {
-            await _picsDownloader.GetSpriteByIndex(index, CreatePic);
+            yield return _picsDownloader.DownloadTextureRoutine(index, CreatePic);
         }
 
         private void CreatePic(Sprite sprite)
